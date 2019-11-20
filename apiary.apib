@@ -1,80 +1,25 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: https://safebodaapi.docs.apiary.io/
 
-# safeboda_api
+#safeboda-api
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+safeboda_api is the API for SafeBoda for promo codes.
 
-## Questions Collection [/questions]
 
-### List All Questions [GET]
 
-+ Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+Here is possible to do the following:
+* List all promo codes, with a activated codes filter
 
-### Create a New Question [POST]
+* Generation of new promo codes for events, with the features:
+    * Can worth a specific amount of ride
+    * Can expire
+    * Can be deactivated
+    * Can be valid when user’s pickup or destination is within x radius of the event venue:
+        * The event contains its venue
+        * A maximum radius area
+        * Lattitude and Longittude references
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+* Updates, deletes promo codes
 
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+* Tests the validity of the promo code by passing a pickup origin and destination
