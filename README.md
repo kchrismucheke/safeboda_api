@@ -1,21 +1,19 @@
 # SafebodaApi
 
-**TODO: Add description**
+SafebodaApi is the API for SafeBoda for promo codes. Here is possible to do the following:
 
-## Installation
+* List all promo codes, with a activated codes filter
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `safeboda_api` to your list of dependencies in `mix.exs`:
+* Generation of new promo codes for events, with the features:
+    * Can worth a specific amount of ride
+    * Can expire
+    * Can be deactivated
+    * Can be valid when user’s pickup or destination is within x radius of the event venue:
+        * The event contains its venue
+        * A maximum radius area
+        * Lattitude and Longittude references
 
-```elixir
-def deps do
-  [
-    {:safeboda_api, "~> 0.1.0"}
-  ]
-end
-```
+* Updates, deletes promo codes
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/safeboda_api](https://hexdocs.pm/safeboda_api).
+* Tests the validity of the promo code by passing a pickup origin and destination
 

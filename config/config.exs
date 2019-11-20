@@ -6,7 +6,9 @@ config :safeboda_api, SafebodaApi.Repo,
   database: "safeboda_api_repo",
   username: "chris",
   password: "sysadmin",
-  hostname: "localhost"
+  hostname: "localhost",
+  show_sensitive_data_on_connection_error: true
+
 
 config :postgrex, :json_library, Jason
 config :safeboda_api, :json_library, Jason
