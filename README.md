@@ -17,3 +17,4 @@ SafebodaApi is the API for SafeBoda for promo codes. It is possible to do the fo
 
 * Tests the validity of the promo code by passing a pickup origin and destination. 
 
+Documentation can be found [here](https://safebodaapi.docs.apiary.io)
