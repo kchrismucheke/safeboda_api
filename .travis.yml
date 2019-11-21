@@ -1,0 +1,19 @@
+matrix:
+  include:
+    language: node_js
+      before_install:
+        - npm install dredd@12.1.0 --global
+      before_script:
+        - dredd
+
+    language: elixir
+    elixir:
+      - 1.8
+    env:
+      - MIX_ENV=test
+    script:
+      - mix test
+    cache:
+      directories:
+        - _build
+        - deps

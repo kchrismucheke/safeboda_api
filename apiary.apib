@@ -23,3 +23,14 @@ Here is possible to do the following:
 * Updates, deletes promo codes
 
 * Tests the validity of the promo code by passing a pickup origin and destination
+
+
+## Promo Codes collection [/V1/promo-codes{?active}]
+
+### List All Promo Codes [GET]
+
++ Parameters
+    + active (optional, boolean, `true`) ... Shows only active promo codes.
+    + page (optional, number, `1`) ... Page number of the current view.
+
++ Request (application/json)
