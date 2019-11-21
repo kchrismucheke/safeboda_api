@@ -34,3 +34,207 @@ Here is possible to do the following:
     + page (optional, number, `1`) ... Page number of the current view.
 
 + Request (application/json)
+
+    + Headers
+
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 200 (application/json)
+
+        [
+            {
+                "code": "WEEKEND_SAFEBODA",
+                "active": true,
+                "coupon_value": {
+                    "amount": 500,
+                    "currency": "KES"
+                },
+                "created_at": "2019-11-20T08:40:51.620Z",
+                "expires_at": "2019-11-30T08:40:51.620Z",
+                "event": {
+                    "venue": "Carnivore Grounds, Nairobi, Kenya",
+                    "radius": 3000,
+                    "latitude": -1.329,
+                    "longitude": 36.8005
+                }
+            }
+        ]
+
+### Create a New Promo Code [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
+    + Body
+
+             {
+                "code": "WEEKEND_SAFEBODA",
+                "active": true,
+                "coupon_value": 500,
+                "created_at": "2019-11-20T08:40:51.620Z",
+                "expires_at": "2019-11-30T08:40:51.620Z",
+                "event": {
+                    "venue": "Carnivore Grounds, Nairobi, Kenya",
+                    "radius": 3000,
+                    "latitude": -1.329,
+                    "longitude": 36.8005
+                }
+            }
+
++ Response 201 (application/json)
+
+        {
+            "status": "OK"
+        }
+
+
+## Gets, updates and deletes Promo Codes [/V1/promo-codes/{code}]
+
+
+### Gets a Promo Code [GET]
+
++ Parameters
+    + code (required, string, `WEEKEND_SAFEBODA`) ... Promo code.
+
++ Request (application/json)
+
+    + Headers
+
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 200 (application/json)
+
+        {
+            "code": "WEEKEND_SAFEBODA",
+            "active": true,
+            "coupon_value": {
+                "amount": 500,
+                "currency": "KES"
+            },
+            "created_at": "2019-11-20T08:40:51.620Z",
+            "expires_at": "2019-11-30T08:40:51.620Z",
+            "event": {
+                "venue": "Carnivore Grounds, Nairobi, Kenya",
+                "radius": 3000,
+                "latitude": -1.329,
+                "longitude": 36.8005
+            }
+        }
+
+### Updates a Promo Code [PUT]
+
++ Parameters
+    + code (required, string, `WEEKEND_SAFEBODA`) ... Promo code.
+
++ Request (application/json)
+
+    + Headers
+
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
+    + Body
+
+            {
+                "code": "WEEKEND_SAFEBODA",
+                "active": true,
+                "coupon_value": {
+                    "amount": 500,
+                    "currency": "KES"
+                },
+                "created_at": "2019-11-20T08:40:51.620Z",
+                "expires_at": "2019-11-30T08:40:51.620Z",
+                "event": {
+                    "venue": "Carnivore Grounds, Nairobi, Kenya",
+                    "radius": 3000,
+                    "latitude": -1.329,
+                    "longitude": 36.8005
+                }
+            }
+
+        
++ Response 200 (application/json)
+
+        {
+            "status": "OK"
+        }
+
+
+### Deletes a Promo Code [DELETE]
+
++ Parameters
+    + code (required, string, `WEEKEND_SAFEBODA`) ... Promo code.
+
++ Request JSON Message
+
+    + Headers
+
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 204
+
+## Promo Code validation [/V1/promo-codes/{code}/validate{?pickup_venue}{?destination_venue}]
+
+Returns whether a promo code is *valid* or not, taking in consideration the distance between the event and current poistion. Also, returns a *polyline* from the current position to the event.
+
+### Validate [GET]
+
++ Parameters
+    + code (required, string, `WEEKEND_SAFEBODA`) ... Promo code.
+    + pickup_venue (required, string, `Kimathi Street, Nairobi, Kenya`) ... Pickup venue.
+    + destination_venue (required, string, `Carnivore Grounds, Nairobi, Kenya`) ... Destination venue.
+
+
++ Request (application/json)
+
+    + Headers
+
+            ApiKey: 01b8b0dd-974a-4fd7-b7c1-9884fdbdde92
+            Token: 2842b128-06b3-427b-b92e-37673684486a
+
++ Response 200 (application/json)
+
+            {
+              "active":true,
+              "code":"WEEKEND_SAFEBODA",
+              "deleted_at":"2019-21-06T07:06:24Z",
+              "destination":{
+                "latitude": -1.329,
+                "longitude": 36.8005
+              },
+              "event":{
+                "id":1,
+                "inserted_at":"2019-11-20T06:49:00Z",
+                "latitude": -1.329,
+                "longitude": 36.8005,
+                "name":null,
+                "radius":3000,
+                "updated_at":"2019-11-20T06:49:00Z",
+                "venue":"Carnivore, Nairobi, Kenya"
+              },
+              "event_id":1,
+              "expires_at":"2019-11-30T08:40:51Z",
+              "id":1,
+              "inserted_at":"2019-11-20T06:49:00Z",
+              "polyline":"eaz@on{eEuB|AaCdBKDc@LWZe@d@m@h@kCzA_DbBeBr@y@XQF]Dc@rGEt@CrA@^EtC@vADbE?r@QXKp@WD_ADeEMe@?OGICEGyBsE_B_DcAyAk@m@aA{@w@u@}AcB_BaBi@a@YKa@EMx@y@pG]jCOr@a@n@mAnBCDMIm@a@_Ak@{@g@oCyAk@SCBKBI?UGIO?UGICQ[u@oBkF",
+              "updated_at":"2019-11-20T07:06:24Z",
+              "valid":true,
+              "coupon_value":{
+                "amount":500,
+                "currency":"KES"
+              }
+            }
+
+
+## Health Check [/health]
+
+### Check API's health [GET]
+
++ Response 200
